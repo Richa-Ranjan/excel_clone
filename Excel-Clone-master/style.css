@@ -1,0 +1,733 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    position: relative;
+}
+
+.title-bar {
+    height: 5vh;
+    background-color:rgb(146, 152, 146);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #0a0a0a;
+    padding: 0 15px;
+}
+
+.menu-bar {
+    height: 5vh;
+    background-color: #bcc3bf;
+    /* bg change krna h */
+    display: flex;
+}
+
+.menu-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #0f0f0f;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item.selected {
+    background-color: #fff;
+    color: #03100a;
+}
+
+.menu-item:hover {
+    background-color: #9ba09d;
+    cursor: pointer;
+}
+
+.menu-item.selected:hover {
+    background-color: #fff;
+    cursor: default;
+} 
+
+.menu-icon-bar {
+    height: 6vh;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+   padding-left: 10px;
+   padding-right: 10px;
+   height: 100%;
+   display: flex;
+   align-items: center;
+}
+
+.menu-icon:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: absolute;
+    top: 10vh;
+    left: 10px;
+    background-color: #cccccc;
+    border: 1px solid lightgray;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 10;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-item {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.dropdown-item:hover {
+    background-color:rgb(168, 164, 164);
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdown-separator {
+    height: 1px;
+    background-color: grey;
+    margin: 5px 15px;
+}
+
+.font-family-selector {
+    width: 150px;
+    font-family: 'Noto Sans';
+}
+
+.selector {
+    height: 30px;
+    font-size: 18px;
+}
+
+.selector option {
+    font-size: 18px;
+}
+
+.formula-bar {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    background-color: rgb(241, 241, 241);
+}
+
+.data-container {
+    height: 75vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.select-all {
+    width: 30px;
+    height: 30px;
+    border: 1px solid lightgray;
+}
+
+.column-name-container {
+    width: calc(100vw - 30px);
+    height: 30px;
+    border: 1px solid lightgray;
+    display: flex;
+    overflow: hidden;
+}
+
+.row-name-container {
+    width: 30px;
+    height: calc(75vh - 30px);
+    border: 1px solid lightgray;
+    overflow: hidden;
+}
+
+.input-cell-container {
+    width: calc(100vw - 30px);
+    height: calc(75vh - 30px);
+    border: 1px solid lightgray;
+    overflow: scroll;
+}
+
+.sheet-bar {
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.sheet-tab-container {
+    display: flex;
+}
+
+.sheet-tab {
+    padding: 5px 10px;
+    margin-right: 2px;
+    background-color: var(--sheet-tab);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.sheet-tab.selected {
+    background-color: var(--sheet-tab-selected);
+}
+
+.extras {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.column-name {
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid lightgray;
+    font-weight: bold;
+}
+
+.row-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 25px;
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
+}
+
+.cell-row {
+    display: flex;
+}
+
+.input-cell {
+    min-width: 100px;
+    min-height: 25px;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    outline-color: #107c41;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    user-select: auto !important;
+    pointer-events: auto !important;
+    cursor: text !important;
+}
+
+
+.input-cell.selected {
+    border: 2px solid #107c41;
+}
+
+.formula-editor {
+    height: 70%;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    display: flex;
+    align-items: center;
+}
+
+.selected-cell {
+    width: 120px;
+}
+
+.function-sign {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formula-input {
+    width: calc(100vw - 160px);
+    outline-color: #107c41;
+}
+
+.menu-icon.selected {
+    background-color: lightgray;
+}
+
+.input-cell.top-cell-selected {
+    border-top: none;
+}
+
+.input-cell.bottom-cell-selected {
+    border-bottom: 1px solid lightgray;
+}
+
+.input-cell.right-cell-selected {
+    border-right: 1px solid lightgray;
+}
+
+.input-cell.left-cell-selected {
+    border-left: none;
+}
+
+.color-picker {
+    position: absolute;
+    width: 26px;
+    height: 12px;
+    border: none;
+    padding: 0;
+    top: 30px;
+    left: 9px;
+    cursor: pointer;
+}
+
+.icon-color-fill, .icon-color-text {
+    position: relative;
+}
+.name-box {
+    width: 60px;
+    height: 28px;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 28px;
+    margin-right: 10px;
+    font-weight: bold;
+    background-color: #fff;
+    font-family: inherit;
+}
+
+.column.hover,
+.row.hover {
+    background-color: #d0e0ff;
+    font-weight: bold;
+}
+
+ body {
+    margin: 0;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-bar {
+    display: flex;
+    justify-content: space-between; /* push content to ends */
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    background-color:lightgrey;
+}
+
+#sheet-bar {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #f3f3f3;
+    border-top: 1px solid #ccc;
+    overflow-x: auto;
+}
+
+#sheet-tabs {
+    display: flex;
+    gap: 5px;
+}
+
+.sheet-tab {
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Update the active sheet tab styles for dark mode */
+.sheet-tab.active {
+    background-color: green; /* Light mode background */
+    border-bottom: 2px solid #a0a9a4;
+}
+
+body[data-theme="dark"] .sheet-tab.active {
+    background-color: #2d2d2d; /* Dark mode background */
+    border-bottom: 2px solid #a7afa7; /* Brighter green for contrast */
+    border-width: 15px;
+    color: #ffffff; /* White text */
+}
+
+/* Optional: Add transition for smoother color change */
+.sheet-tab {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#add-sheet {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#add-sheet:hover {
+    background-color: #ddd;
+}
+
+#sheet-content {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+}
+/* Add to your existing dark mode styles */
+body[data-theme="dark"] .icon-add {
+    color: #151515 !important; /* White color for dark mode */
+}
+
+body[data-theme="dark"] .icon-add:hover {
+    color: #107c41 !important; /* Brand green color on hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
+}
+
+/* Optional: Add transition for smooth color change */
+.icon-add {
+    transition: color 0.3s ease, background-color 0.2s ease;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  background: rgb(109, 108, 108);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Light Mode (default) */
+body[data-theme="light"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark Mode */
+body[data-theme="dark"] {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body[data-theme="dark"] .title-bar {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body[data-theme="dark"] .sheet-tab {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+
+body[data-theme="dark"] #sheet-content {
+  background-color: #2a2a2a;
+}
+
+.menu-icon-bar {
+    height: 6vh;
+    background-color: #ffffff; /* light mode background */
+    display: flex;
+    align-items: center;
+    color: black; /* light mode text */
+}
+
+/* Dark mode override */
+body[data-theme="dark"] .menu-icon-bar {
+    background-color: #000000;
+    color: white;
+}
+.menu-icon-bar {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.title-bar {
+    height: 6vh;
+    background-color: #107c41;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    color: white;
+}
+
+.excel-title {
+    font-size: 18px;
+    font-weight: 400;
+    min-width: 150px;
+}
+.search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Ensure vertical alignment if needed */
+    margin: 0 auto;
+}
+
+#nav-search {
+    width: 300px; /* Adjust the length as needed */
+    padding: 6px 15px;
+    border: 1px solid #e0e0e0;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+#nav-search:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(16, 124, 65, 0.3);
+    background-color: white;
+}
+
+
+/* Dark mode adjustments */
+body[data-theme="dark"] #nav-search {
+    background-color: rgba(255, 255, 255, 0.224);
+    border-color: #555;
+    color: white;
+}
+
+body[data-theme="dark"] #nav-search::placeholder {
+    color: #ccc;
+}
+
+/* Add to style.css */
+.excel-brand {
+    display: flex;
+    align-items: center;
+    min-width: 180px;
+    gap: 12px; /* Space between logo and other elements */
+}
+
+.excel-logo {
+    height: 32px; /* Match navbar height */
+    width: auto;
+    margin-right: 10px;
+}
+
+/* Dark mode adjustment if needed */
+body[data-theme="dark"] .excel-logo {
+    filter: none; /* Reset filter for dark mode */
+}
+
+/* Existing style
+
+/* Add/update these styles in your CSS */
+.formula-bar {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding: 0 0.7rem;
+    background-color: rgb(241, 241, 241);
+    gap: 8px; /* Adds spacing between elements */
+}
+
+.dot {
+    height: 24px;
+    width: auto;
+    padding: 0 8px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+    vertical-align: middle;
+}
+
+.dot:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+/* Dark mode adjustments */
+body[data-theme="dark"] .dot {
+    filter: invert(1);
+}
+
+body[data-theme="dark"] .dot:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Existing formula bar elements adjustments */
+.name-box {
+    order: 1; /* Ensures name box stays first */
+}
+
+.dot {
+    order: 2; /* Places dots icon after name box */
+}
+
+.formula-editor.selected-cell {
+    order: 3;
+}
+
+.function-sign {
+    order: 4;
+}
+
+.formula-input {
+    order: 5;
+}
+body[data-theme="dark"] .dot {
+    filter: none; /* Reset filter for dark mode */
+}
+/* Add these styles */
+.fx-group {
+    order: 3; /* Position after three dots */
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 4px;
+}
+
+.function-indicator {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    padding: 2px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+}
+
+.fx-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: #343534;
+    font-weight: 600;
+}
+
+.tick-icon {
+    fill: #107c41;
+    margin-left: 4px;
+}
+
+/* Dark mode adjustments */
+body[data-theme="dark"] .function-indicator {
+    background: #1e1d1d;
+    border-color: #5f5f5f;
+}
+
+body[data-theme="dark"] .fx-text,
+body[data-theme="dark"] .tick-icon {
+    color: #d2dad2;
+    fill: #4caf50;
+}
+
+/* Update existing order properties */
+.name-box { order: 1; }
+.dot { order: 2; }
+.formula-editor.selected-cell { order: 4; }
+.function-sign { order: 5; }
+.formula-input { order: 6; }
+
+/* Add to style.css */
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+    border-radius: 14px;
+    background-color: #e0e0e0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+}
+
+.theme-toggle:hover {
+    background-color: #d0d0d0;
+}
+
+.slider {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sun, .moon {
+    position: absolute;
+    font-size: 14px;
+    transition: opacity 0.3s;
+}
+
+.sun {
+    left: -28px;
+    opacity: 0;
+}
+
+.moon {
+    right: -28px;
+    opacity: 1;
+}
+
+/* Dark mode states */
+body[data-theme="dark"] .theme-toggle {
+    background-color: #107c41;
+    border-color: #0a4a2a;
+}
+
+body[data-theme="dark"] .slider {
+    transform: translateX(32px);
+}
+
+body[data-theme="dark"] .sun {
+    opacity: 1;
+}
+
+body[data-theme="dark"] .moon {
+    opacity: 0;
+}
+
+/* Accessibility */
+.theme-toggle:focus-visible {
+    outline: 2px solid #107c41;
+    outline-offset: 2px;
+}
