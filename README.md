@@ -25,9 +25,7 @@ To run the project locally:
 
 🛠️ Tech Stack
 HTML
-
 CSS
-
 JavaScript
 
 🙋‍♀️ About Me
