@@ -20,13 +20,22 @@ A lightweight and interactive Excel-like spreadsheet web application built using
 To run the project locally:
 
 ```bash
-git clone https://github.com/Richa-Ranjan/excel_clone.git
-cd excel_clone
-# Open index.html in your browser
 
 
 
+🛠️ Tech Stack
+HTML
 
+CSS
+
+JavaScript
+
+🙋‍♀️ About Me
+Richa Ranjan
+🎓 B.Tech | CSE & Business Systems
+💻 Web Development Enthusiast
+🔗 LinkedIn Profile
+🐙 GitHub Profile
 
 
 
