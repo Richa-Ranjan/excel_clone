@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Share - Excel Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Segoe UI, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+        }
+
+        .share-container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #107c41;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .generate-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .link-box {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #107c41;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0b5e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="share-container">
+        <div class="share-title">Share This Workbook</div>
+
+        <div class="form-group">
+            <label for="email">Invite people (email)</label>
+            <input type="email" id="email" placeholder="example@example.com" />
+        </div>
+
+        <div class="form-group">
+            <label for="permissions">Permissions</label>
+            <select id="permissions">
+                <option value="edit">Can edit</option>
+                <option value="view">Can view</option>
+            </select>
+        </div>
+
+        <button onclick="alert('Invite sent!')">Send Invite</button>
+
+        <hr style="margin: 30px 0;">
+
+        <div class="form-group">
+            <label>Get a shareable link</label>
+            <div class="generate-link">
+                <div class="link-box" id="shareable-link">https://excelclone.io/your-sheet-id</div>
+                <button onclick="copyLink()">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyLink() {
+            const link = document.getElementById("shareable-link").innerText;
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Copied to clipboard!");
+            });
+        }
+    </script>
+</body>
+</html>
