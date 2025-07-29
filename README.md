@@ -23,7 +23,6 @@ A powerful, web-based spreadsheet application built using **HTML**, **CSS**, **J
 
 ### 📁 File Operations
 - **Save** data as `.json` for persistent storage.
-- **Export** as `.xlsx` using [`SheetJS`](https://sheetjs.com/).
 - **Name-based cell selection** like `A1`, `B2`, etc.
 
 ### 🧭 Toolbar Tabs
