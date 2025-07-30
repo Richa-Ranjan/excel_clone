@@ -86,7 +86,7 @@ A .xlsx file will download to your system.
 
 To Share
 
-Click “Share” → Fill dummy mail field (real backend can be added).
+Click “Share” → Fill dummy mail field .
 
 💡 Unique Highlights:-
 🧠 Dynamic sheet management with clean JSON structure.
